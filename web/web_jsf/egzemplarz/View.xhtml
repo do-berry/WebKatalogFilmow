@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEgzemplarzTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" id="egzemplarz">
+                    <h:outputText value="#{bundle.ViewEgzemplarzLabel_egzemplarzId}"/>
+                    <h:outputText value="#{egzemplarzController.selected.egzemplarzId}" title="#{bundle.ViewEgzemplarzTitle_egzemplarzId}"/>
+                    <h:outputText value="#{bundle.ViewEgzemplarzLabel_status}"/>
+                    <h:outputText value="#{egzemplarzController.selected.status}" title="#{bundle.ViewEgzemplarzTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewEgzemplarzLabel_filmId}"/>
+                    <h:outputText value="#{egzemplarzController.selected.filmId}" title="#{bundle.ViewEgzemplarzTitle_filmId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{egzemplarzController.destroyAndView}" value="#{bundle.ViewEgzemplarzDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEgzemplarzEditLink}"/>
+                <br />
+                <h:commandLink action="#{egzemplarzController.prepareCreate}" value="#{bundle.ViewEgzemplarzCreateLink}" />
+                <br />
+                <h:commandLink action="#{egzemplarzController.prepareList}" value="#{bundle.ViewEgzemplarzShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEgzemplarzIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

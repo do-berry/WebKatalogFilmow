@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEgzemplarzTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEgzemplarzEmpty}" rendered="#{egzemplarzController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{egzemplarzController.items.rowCount > 0}">
+                    <h:outputText value="#{egzemplarzController.pagination.pageFirstItem + 1}..#{egzemplarzController.pagination.pageLastItem + 1}/#{egzemplarzController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{egzemplarzController.previous}" value="#{bundle.Previous} #{egzemplarzController.pagination.pageSize}" rendered="#{egzemplarzController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{egzemplarzController.next}" value="#{bundle.Next} #{egzemplarzController.pagination.pageSize}" rendered="#{egzemplarzController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{egzemplarzController.items}" var="item" border="0" cellpadding="2" id="egzemplarze" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEgzemplarzTitle_egzemplarzId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.egzemplarzId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEgzemplarzTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEgzemplarzTitle_filmId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.filmId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{egzemplarzController.prepareView}" value="#{bundle.ListEgzemplarzViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{egzemplarzController.prepareEdit}" value="#{bundle.ListEgzemplarzEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{egzemplarzController.destroy}" value="#{bundle.ListEgzemplarzDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{egzemplarzController.prepareCreate}" value="#{bundle.ListEgzemplarzCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEgzemplarzIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

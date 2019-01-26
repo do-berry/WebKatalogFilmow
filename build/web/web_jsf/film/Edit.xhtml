@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFilmTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFilmLabel_filmId}" for="filmId" />
+                    <h:inputText id="filmId" value="#{filmController.selected.filmId}" title="#{bundle.EditFilmTitle_filmId}" required="true" requiredMessage="#{bundle.EditFilmRequiredMessage_filmId}"/>
+                    <h:outputLabel value="#{bundle.EditFilmLabel_tytul}" for="tytul" />
+                    <h:inputText id="tytul" value="#{filmController.selected.tytul}" title="#{bundle.EditFilmTitle_tytul}" required="true" requiredMessage="#{bundle.EditFilmRequiredMessage_tytul}"/>
+                    <h:outputLabel value="#{bundle.EditFilmLabel_studio}" for="studio" />
+                    <h:inputText id="studio" value="#{filmController.selected.studio}" title="#{bundle.EditFilmTitle_studio}" required="true" requiredMessage="#{bundle.EditFilmRequiredMessage_studio}"/>
+                    <h:outputLabel value="#{bundle.EditFilmLabel_rezyser}" for="rezyser" />
+                    <h:inputText id="rezyser" value="#{filmController.selected.rezyser}" title="#{bundle.EditFilmTitle_rezyser}" required="true" requiredMessage="#{bundle.EditFilmRequiredMessage_rezyser}"/>
+                    <h:outputLabel value="#{bundle.EditFilmLabel_nosnik}" for="nosnik" />
+                    <h:inputText id="nosnik" value="#{filmController.selected.nosnik}" title="#{bundle.EditFilmTitle_nosnik}" required="true" requiredMessage="#{bundle.EditFilmRequiredMessage_nosnik}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{filmController.update}" value="#{bundle.EditFilmSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFilmViewLink}"/>
+                <br />
+                <h:commandLink action="#{filmController.prepareList}" value="#{bundle.EditFilmShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFilmIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

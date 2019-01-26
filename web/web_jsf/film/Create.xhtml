@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFilmTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFilmLabel_filmId}" for="filmId" />
+                    <h:inputText id="filmId" value="#{filmController.selected.filmId}" title="#{bundle.CreateFilmTitle_filmId}" required="true" requiredMessage="#{bundle.CreateFilmRequiredMessage_filmId}"/>
+                    <h:outputLabel value="#{bundle.CreateFilmLabel_tytul}" for="tytul" />
+                    <h:inputText id="tytul" value="#{filmController.selected.tytul}" title="#{bundle.CreateFilmTitle_tytul}" required="true" requiredMessage="#{bundle.CreateFilmRequiredMessage_tytul}"/>
+                    <h:outputLabel value="#{bundle.CreateFilmLabel_studio}" for="studio" />
+                    <h:inputText id="studio" value="#{filmController.selected.studio}" title="#{bundle.CreateFilmTitle_studio}" required="true" requiredMessage="#{bundle.CreateFilmRequiredMessage_studio}"/>
+                    <h:outputLabel value="#{bundle.CreateFilmLabel_rezyser}" for="rezyser" />
+                    <h:inputText id="rezyser" value="#{filmController.selected.rezyser}" title="#{bundle.CreateFilmTitle_rezyser}" required="true" requiredMessage="#{bundle.CreateFilmRequiredMessage_rezyser}"/>
+                    <h:outputLabel value="#{bundle.CreateFilmLabel_nosnik}" for="nosnik" />
+                    <h:inputText id="nosnik" value="#{filmController.selected.nosnik}" title="#{bundle.CreateFilmTitle_nosnik}" required="true" requiredMessage="#{bundle.CreateFilmRequiredMessage_nosnik}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{filmController.create}" value="#{bundle.CreateFilmSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{filmController.prepareList}" value="#{bundle.CreateFilmShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFilmIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFilmTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFilmLabel_filmId}"/>
+                    <h:outputText value="#{filmController.selected.filmId}" title="#{bundle.ViewFilmTitle_filmId}"/>
+                    <h:outputText value="#{bundle.ViewFilmLabel_tytul}"/>
+                    <h:outputText value="#{filmController.selected.tytul}" title="#{bundle.ViewFilmTitle_tytul}"/>
+                    <h:outputText value="#{bundle.ViewFilmLabel_studio}"/>
+                    <h:outputText value="#{filmController.selected.studio}" title="#{bundle.ViewFilmTitle_studio}"/>
+                    <h:outputText value="#{bundle.ViewFilmLabel_rezyser}"/>
+                    <h:outputText value="#{filmController.selected.rezyser}" title="#{bundle.ViewFilmTitle_rezyser}"/>
+                    <h:outputText value="#{bundle.ViewFilmLabel_nosnik}"/>
+                    <h:outputText value="#{filmController.selected.nosnik}" title="#{bundle.ViewFilmTitle_nosnik}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{filmController.destroyAndView}" value="#{bundle.ViewFilmDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFilmEditLink}"/>
+                <br />
+                <h:commandLink action="#{filmController.prepareCreate}" value="#{bundle.ViewFilmCreateLink}" />
+                <br />
+                <h:commandLink action="#{filmController.prepareList}" value="#{bundle.ViewFilmShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFilmIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
